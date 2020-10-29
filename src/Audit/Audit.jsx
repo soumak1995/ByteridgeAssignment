@@ -59,13 +59,13 @@ handleDropdownChange(e){
                 return { width: "30%" };
               }},
             {dataField:"role",text:"Role",sort: true},
-            {dataField:"createdDate",text:"CreatedDate", sort: true,
+            {dataField:"createdDate",text:"Created Date", sort: true,
             formatter: (_, col) => {
                 return this.convertDateTo12Hour(new Date(col.createdDate));
             }},
-            {dataField:"firstName",text:"firstName",
+            {dataField:"firstName",text:"Firstname",
             filter: textFilter()},
-            {dataField:"lastName",text:"lastname"},
+            {dataField:"lastName",text:"Lastname"},
             {dataField:"",text:"Delete",
             formatter: (_, col) => {
                 return col.deleting ? <em> - Deleting...</em>
@@ -80,13 +80,13 @@ handleDropdownChange(e){
                 return { width: "30%" };
               }},
             {dataField:"role",text:"Role",sort: true},
-            {dataField:"createdDate",text:"CreatedDate", sort: true,
+            {dataField:"createdDate",text:"Created Date", sort: true,
             formatter: (_, col) => {
                 return this.convertDateTo24Hour(new Date(col.createdDate));
             }},
-            {dataField:"firstName",text:"firstName",
+            {dataField:"firstName",text:"Firstname",
             filter: textFilter()},
-            {dataField:"lastName",text:"lastname"},
+            {dataField:"lastName",text:"Lastname"},
             {dataField:"",text:"Delete",
             formatter: (_, col) => {
                 return col.deleting ? <em> - Deleting...</em>
@@ -173,8 +173,8 @@ function mapState(state) {
     const { users, authentication } = state;
     const { user } = authentication;
     return {
-        user:user,
-        users:users
+    user,
+    users
     }
 }
 
