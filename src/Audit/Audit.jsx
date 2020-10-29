@@ -22,15 +22,31 @@ class Auditpage extends React.Component {
     handleDeleteUser(id) {
         return (e) => this.props.deleteUser(id);
     }
-   convertDateTo12Hour(d){
-    var dformat = [
-        d.getFullYear(), d.getDate(),d.getMonth()+1
-        ].join('/')+' '+
-       [d.getHours()%12|| 12,
-        d.getMinutes(),
-        d.getSeconds()].join(':');
-     return dformat;
-   }
+    convertDateTo12Hour(date){
+        var month = '' + (date.getMonth() + 1);
+        var   day = '' + date.getDate();
+         var year = date.getFullYear();
+    
+            if (month.length < 2) 
+                month = '0' + month;
+            if (day.length < 2) 
+                day = '0' + day;
+    
+            var dateStr=[year, month, day].join('/');
+            
+            var hr=''+date.getHours()%12|| 12;
+            var min=''+date.getMinutes();
+            var sec=''+date.getSeconds();
+           
+                 if (hr.length < 2) 
+                    hr = '0' + hr;
+                if (min.length < 2) 
+                     min = '0' + min;
+                if (sec.length < 2) 
+                     sec = '0' + sec;
+            var timeStr=[hr,min,sec].join(':')
+         return dateStr+" "+timeStr;
+       }
   convertDateTo24Hour(date){
    var month = '' + (date.getMonth() + 1);
     var   day = '' + date.getDate();
