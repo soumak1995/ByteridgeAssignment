@@ -24,7 +24,7 @@ class Auditpage extends React.Component {
     }
     convertDateTo12Hour(date){
         var month = '' + (date.getMonth() + 1);
-        var   day = '' + date.getDate();
+        var  day = '' + date.getDate();
          var year = date.getFullYear();
     
             if (month.length < 2) 
@@ -38,14 +38,24 @@ class Auditpage extends React.Component {
             var min=''+date.getMinutes();
             var sec=''+date.getSeconds();
            
-                 if (hr.length < 2) 
-                    hr = '0' + hr;
-                if (min.length < 2) 
-                     min = '0' + min;
-                if (sec.length < 2) 
-                     sec = '0' + sec;
-            var timeStr=[hr,min,sec].join(':')
-         return dateStr+" "+timeStr;
+            var hr=date.getHours();
+            var min=date.getMinutes();
+            var sec=date.getSeconds();
+            var dd = "AM";
+            var h = hr;
+            if (h >= 12) {
+              h = hr - 12;
+              dd = "PM";
+            }
+            if (h == 0) {
+              h = 12;
+            }
+            h = h<10?"0"+h:h;
+            min = min < 10 ? "0" + min : min;
+    
+            sec = sec < 10 ? "0" + sec : sec;
+            var timeStr=[h,min,sec].join(':')
+         return dateStr+" "+timeStr+" "+dd;    
        }
   convertDateTo24Hour(date){
    var month = '' + (date.getMonth() + 1);
